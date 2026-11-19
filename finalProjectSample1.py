@@ -180,8 +180,14 @@ def playHangman():
     # boolean for if word is solved
     wordSolved = False
 
+    # Create a count variable
+    attempts = 0
+
     # while -> allow user to keep guessing until word is solved
     while wordSolved == False:
+        # Increment attempt count
+        attempts += 1
+
         # for -> display all blanks in guessList
         print("Mystery Word: ", end=" ")
         for blank in guessList:
@@ -256,23 +262,23 @@ def playHangman():
 #                                         MAIN BLOCK
 #--------------------------------------------------------------------------------------------
 
-# #boolean for if user wishes to play game
-# playAgain = True
+#boolean for if user wishes to play game
+playAgain = True
 
-# # while -> allow user to keep playing game until they say their done
-# while playAgain == True:
+# while -> allow user to keep playing game until they say their done
+while playAgain == True:
 
-#     # play the game
-#     playHangman()
+    # play the game
+    playHangman()
 
-#     userResponse = obtain1OR2("Would you like to play again [1 - Yes | 2 - No]: ")
+    userResponse = obtain1OR2("Would you like to play again [1 - Yes | 2 - No]: ")
 
-#     # if -> 2 entered so no more playing
-#     if(userResponse == 2):
-#         # user doesn't want to play again
-#         playAgain = False
+    # if -> 2 entered so no more playing
+    if(userResponse == 2):
+        # user doesn't want to play again
+        playAgain = False
 
-# # thank you message
-# print("Thank you for playing Word of Fortune!")
+# thank you message
+print("Thank you for playing Word of Fortune!")
 
-generateLeaderboard("Frank", 6, "hotdog")
+# generateLeaderboard("Frank", 6, "hotdog")
