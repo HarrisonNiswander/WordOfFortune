@@ -210,14 +210,29 @@ def playHangman(name):
     # convert word into list and list with blanks
     mysteryList, guessList = createBlankList(mysteryWord)
 
-    # explain rules
-    print("Welcome to Word of Fortune!\nRules: \n")
+    # welcome message
+    print("\nWelcome to Word of Fortune!\n")
+
+    # ask if user wants to see rules
+    rulesAnswer = obtain1OR2("Would you like to see the rules? [1 - Yes | 2 - No]: ")
+
+    # if -> show rules if they want to see them
+    if(rulesAnswer == 1):
+        # show rules
+        showRules()
+
+    # else -> don't wish to see rules (add spacing)
+    else:
+        print()
 
     # boolean for if word is solved
     wordSolved = False
 
     # Create a count variable
     attempts = 0
+
+    # begin play message
+    print("Let's Play Word of Fortune!!!!\n")
 
     # while -> allow user to keep guessing until word is solved
     while wordSolved == False:
@@ -296,6 +311,12 @@ def playHangman(name):
     # call leaderboard
     generateLeaderboard(name, attempts, mysteryWord)
 
+# showRules() -> show rules
+def showRules():
+    print("\nRules: ")
+    print("1.) On each turn, you may either guess a letter or the entire word.")
+    print("2.) Each time a correct letter is guessed, the position is revealed in the blanks.")
+    print("3.) Your goal is to figure out the word in as few of guesses as possible.\n")
 
 #--------------------------------------------------------------------------------------------
 #                                         MAIN BLOCK
