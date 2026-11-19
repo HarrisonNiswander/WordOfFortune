@@ -161,16 +161,10 @@ def generateLeaderboard(userName, userGuesses, userWord):
     # reorder leaderboard to be from lowest guess to highest guess (tie breaker is word alphabetical)
     leaderboard.sort(key=lambda row: (row[1], row[2]), reverse=False)
 
+    # leaderboard header
     print("Word of Fortune All Time Top 10\n")
     print(f"{'    \tName':<10}   {'  Guesses':<3}   {'\tWord':<12}")
     print("-" * 40)
-
-    # display sorted leaderboard
-    for place in range(10):
-        print(f"{place + 1}.)\t{leaderboard[place][0]:<10}   {leaderboard[place][1]:<3}  \t{leaderboard[place][2]:<12}")
-
-    # open leaderboard.txt in write mode
-    file = open("leaderboard.txt", 'w')
 
     # determine which rank the user is on the leaderboard
     for num in range(len(leaderboard)):
@@ -178,17 +172,29 @@ def generateLeaderboard(userName, userGuesses, userWord):
             # rank
             rank = num + 1
 
-    # save 2d array in file
-    for num in range(len(leaderboard)):
-        # add each record (name, score, word) to file
-        file.write(f"{leaderboard[num][0]},{leaderboard[num][1]},{leaderboard[num][2]}\n")
+    # display sorted leaderboard
+    for place in range(10):
+        # if -> add [YOUR SCORE] if user finishes in top 10
+        if(place + 1 == rank):
+            print(f"{place + 1}.)\t{leaderboard[place][0]:<10}   {leaderboard[place][1]:<3}  \t{leaderboard[place][2]:<12}\t[YOUR SCORE]")
 
-    # if -> user is not in top 10
-    if(rank > 10 and rank != len(leaderboard) + 1): 
+        # else -> print like normal
+        else:
+            print(f"{place + 1}.)\t{leaderboard[place][0]:<10}   {leaderboard[place][1]:<3}  \t{leaderboard[place][2]:<12}")
+
+    # if -> user is 11th (don't need to show 10th again)
+    if(rank == 11): 
+        # display place above and below
+        print("...")
+        print(f"{rank - 1}.)\t{leaderboard[rank - 1][0]:<10}   {leaderboard[rank - 1][1]:<3}  \t{leaderboard[rank - 1][2]:<12}\t[YOUR SCORE]")
+        print(f"{rank}.)\t{leaderboard[rank][0]:<10}   {leaderboard[rank][1]:<3}  \t{leaderboard[rank][2]:<12}")
+        
+    # elif -> user is not in top 10 and not last
+    elif(rank > 10 and rank != len(leaderboard) + 1): 
         # display place above and below
         print("...")
         print(f"{rank - 2}.)\t{leaderboard[rank - 2][0]:<10}   {leaderboard[rank - 2][1]:<3}  \t{leaderboard[rank - 2][2]:<12}")
-        print(f"{rank - 1}.)\t{leaderboard[rank - 1][0]:<10}   {leaderboard[rank - 1][1]:<3}  \t{leaderboard[rank - 1][2]:<12}")
+        print(f"{rank - 1}.)\t{leaderboard[rank - 1][0]:<10}   {leaderboard[rank - 1][1]:<3}  \t{leaderboard[rank - 1][2]:<12}\t[YOUR SCORE]")
         print(f"{rank}.)\t{leaderboard[rank][0]:<10}   {leaderboard[rank][1]:<3}  \t{leaderboard[rank][2]:<12}")
     
     # elif -> user is not in top 10 and is last
@@ -196,9 +202,17 @@ def generateLeaderboard(userName, userGuesses, userWord):
         # display place above
         print("...")
         print(f"{rank - 2}.)\t{leaderboard[rank - 2][0]:<10}   {leaderboard[rank - 2][1]:<3}  \t{leaderboard[rank - 2][2]:<12}")
-        print(f"{rank - 1}.)\t{leaderboard[rank - 1][0]:<10}   {leaderboard[rank - 1][1]:<3}  \t{leaderboard[rank - 1][2]:<12}")
-    
+        print(f"{rank - 1}.)\t{leaderboard[rank - 1][0]:<10}   {leaderboard[rank - 1][1]:<3}  \t{leaderboard[rank - 1][2]:<12}\t[YOUR SCORE]")
+
     print()
+
+    # open leaderboard.txt in write mode
+    file = open("leaderboard.txt", 'w')
+
+    # save 2d array in file
+    for num in range(len(leaderboard)):
+        # add each record (name, score, word) to file
+        file.write(f"{leaderboard[num][0]},{leaderboard[num][1]},{leaderboard[num][2]}\n")
 
     # close file
     file.close()
@@ -258,12 +272,11 @@ def playHangman(name):
             # check guess
             guessList, guessRight = checkLetter(mysteryList, guessList, userLetterGuess)
 
-            # USE guessRight Variable to keep track of Score!!!!
-            #
-            #
+            # if -> guess was correct
             if(guessRight == True):
                 print("Correct Guess\n")
 
+            # else -> guess was wrong
             else:
                 print("Wrong Guess\n")
 
@@ -306,7 +319,7 @@ def playHangman(name):
             # flip boolean for word solved
             wordSolved = True
 
-    print("Word is solved!\n\n")
+    print(f"Word is solved!\nYour word was {mysteryWord} and you solved it in {attempts} guesses!\n\n")
 
     # call leaderboard
     generateLeaderboard(name, attempts, mysteryWord)
@@ -355,4 +368,4 @@ while playAgain == True:
         playAgain = False
 
 # thank you message
-print("Thank you for playing Word of Fortune!")
+print("\nThank you for playing Word of Fortune!")

@@ -1,13 +1,17 @@
 Riley,5,tested
 Harrison,7,peel
+Harrison,7,retire
 Harrison,10,ground
 Harrison,11,adaptable
 Harrison,11,repair
+Harrison,13,dapper
+Harrison,13,hard
 Riley,14,group
 Harrison,20,hug
 Riley,20,trucks
 Harrison,27,avoid
 Harrison,27,twig
+Harrison,28,shivering
 Harrison,31,tedious
 Riley,32,wait
 Harrison,55,gaze
