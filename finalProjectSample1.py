@@ -172,10 +172,25 @@ def generateLeaderboard(userName, userGuesses, userWord):
     # open leaderboard.txt in write mode
     file = open("leaderboard.txt", 'w')
 
+    # determine which rank the user is on the leaderboard
+    for num in range(len(leaderboard)):
+        if(leaderboard[num][0] == userName and leaderboard[num][1] == userGuesses and leaderboard[num][2] == userWord):
+            # rank
+            rank = num + 1
+
     # save 2d array in file
     for num in range(len(leaderboard)):
         # add each record (name, score, word) to file
-         file.write(f"{leaderboard[num][0]},{leaderboard[num][1]},{leaderboard[num][2]}\n")
+        file.write(f"{leaderboard[num][0]},{leaderboard[num][1]},{leaderboard[num][2]}\n")
+
+    # if -> user is not in top 10
+    if(rank > 10): 
+        # display place above and below
+        print("...")
+        print(f"{rank - 1}.)\t{leaderboard[rank - 1][0]:<10}   {leaderboard[rank - 1][1]:<3}  \t{leaderboard[rank - 1][2]:<12}")
+        print(f"{rank}.)\t{leaderboard[rank][0]:<10}   {leaderboard[rank][1]:<3}  \t{leaderboard[rank][2]:<12}")
+        print(f"{rank + 1}.)\t{leaderboard[rank + 1][0]:<10}   {leaderboard[rank + 1][1]:<3}  \t{leaderboard[rank + 1][2]:<12}")
+    print()
 
     # close file
     file.close()
