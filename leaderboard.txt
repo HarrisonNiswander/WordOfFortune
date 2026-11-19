@@ -11,13 +11,3 @@ Harrison,27,twig
 Harrison,31,tedious
 Riley,32,wait
 Harrison,55,gaze
-Harrison,100,cookies
-Harrison,100,cookies
-Harrison,100,cookies
-Harrison,100,cookies
-Harrison,100,cookies
-Harrison,100,cookies
-Harrison,100,cookies
-Harrison,100,cookies
-Harrison,100,cookies
-Harrison,100,cookies
