@@ -155,6 +155,8 @@ def generateLeaderboard(userName, userGuesses, userWord):
         # add to list
         leaderboard.append([name, score, word])
 
+    # close file
+    leaderboardFile.close()
 
     # reorder leaderboard to be from lowest guess to highest guess (tie breaker is word alphabetical)
     leaderboard.sort(key=lambda row: (row[1], row[2]), reverse=False)
@@ -167,7 +169,18 @@ def generateLeaderboard(userName, userGuesses, userWord):
     for place in range(10):
         print(f"{place + 1}.)\t{leaderboard[place][0]:<10}   {leaderboard[place][1]:<3}  \t{leaderboard[place][2]:<12}")
 
-def playHangman():
+    # open leaderboard.txt in write mode
+    file = open("leaderboard.txt", 'w')
+
+    # save 2d array in file
+    for num in range(len(leaderboard)):
+        # add each record (name, score, word) to file
+         file.write(f"{leaderboard[num][0]},{leaderboard[num][1]},{leaderboard[num][2]}\n")
+
+    # close file
+    file.close()
+
+def playHangman(name):
     # mystery word (word that user will guess)
     mysteryWord = obtainMysteryWord()
     
@@ -257,10 +270,29 @@ def playHangman():
 
     print("Word is solved!\n\n")
 
+    # call leaderboard
+    generateLeaderboard(name, attempts, mysteryWord)
+
 
 #--------------------------------------------------------------------------------------------
 #                                         MAIN BLOCK
 #--------------------------------------------------------------------------------------------
+# boolean word good
+wordGood = False
+
+# while -> make sure name length is good
+while wordGood == False:
+    # ask user for name
+    name = input("Enter your name to continue: ")
+
+    # if -> check to see if word is between 0 and 10
+    if(len(name) < 0 or len(name) > 10):
+        #name is too long
+        print("\nName is too long. Please try again.\n")
+
+    # else -> word between 0 and 10 characters long
+    else:
+        wordGood = True
 
 #boolean for if user wishes to play game
 playAgain = True
@@ -269,7 +301,7 @@ playAgain = True
 while playAgain == True:
 
     # play the game
-    playHangman()
+    playHangman(name)
 
     userResponse = obtain1OR2("Would you like to play again [1 - Yes | 2 - No]: ")
 
@@ -280,5 +312,3 @@ while playAgain == True:
 
 # thank you message
 print("Thank you for playing Word of Fortune!")
-
-# generateLeaderboard("Frank", 6, "hotdog")
