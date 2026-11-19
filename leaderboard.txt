@@ -1,9 +1,16 @@
 Riley,5,tested
+Harrison,7,peel
+Harrison,10,ground
+Harrison,11,adaptable
+Harrison,11,repair
 Riley,14,group
+Harrison,20,hug
 Riley,20,trucks
+Harrison,27,avoid
 Harrison,27,twig
 Harrison,31,tedious
 Riley,32,wait
+Harrison,55,gaze
 Harrison,100,cookies
 Harrison,100,cookies
 Harrison,100,cookies

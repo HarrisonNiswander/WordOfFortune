@@ -184,12 +184,20 @@ def generateLeaderboard(userName, userGuesses, userWord):
         file.write(f"{leaderboard[num][0]},{leaderboard[num][1]},{leaderboard[num][2]}\n")
 
     # if -> user is not in top 10
-    if(rank > 10): 
+    if(rank > 10 and rank != len(leaderboard) + 1): 
         # display place above and below
         print("...")
+        print(f"{rank - 2}.)\t{leaderboard[rank - 2][0]:<10}   {leaderboard[rank - 2][1]:<3}  \t{leaderboard[rank - 2][2]:<12}")
         print(f"{rank - 1}.)\t{leaderboard[rank - 1][0]:<10}   {leaderboard[rank - 1][1]:<3}  \t{leaderboard[rank - 1][2]:<12}")
         print(f"{rank}.)\t{leaderboard[rank][0]:<10}   {leaderboard[rank][1]:<3}  \t{leaderboard[rank][2]:<12}")
-        print(f"{rank + 1}.)\t{leaderboard[rank + 1][0]:<10}   {leaderboard[rank + 1][1]:<3}  \t{leaderboard[rank + 1][2]:<12}")
+    
+    # elif -> user is not in top 10 and is last
+    elif(rank > 10 and rank == len(leaderboard) + 1): 
+        # display place above
+        print("...")
+        print(f"{rank - 2}.)\t{leaderboard[rank - 2][0]:<10}   {leaderboard[rank - 2][1]:<3}  \t{leaderboard[rank - 2][2]:<12}")
+        print(f"{rank - 1}.)\t{leaderboard[rank - 1][0]:<10}   {leaderboard[rank - 1][1]:<3}  \t{leaderboard[rank - 1][2]:<12}")
+    
     print()
 
     # close file
