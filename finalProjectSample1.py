@@ -217,7 +217,8 @@ def generateLeaderboard(userName, userGuesses, userWord):
     # close file
     file.close()
 
-def playHangman(name):
+# playGame() -> calls all the functions needed to play the game
+def playGame(name):
     # mystery word (word that user will guess)
     mysteryWord = obtainMysteryWord()
     
@@ -358,7 +359,7 @@ playAgain = True
 while playAgain == True:
 
     # play the game
-    playHangman(name)
+    playGame(name)
 
     userResponse = obtain1OR2("Would you like to play again [1 - Yes | 2 - No]: ")
 
