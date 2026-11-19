@@ -1,4 +1,7 @@
 Riley,5,tested
+Harrison,6,act
+Harrison,7,communicate
+Harrison,7,hideous
 Harrison,7,peel
 Harrison,7,retire
 RILEY,9,peace
@@ -11,6 +14,7 @@ RILEY,14,belligerent
 Riley,14,group
 Harrison,20,hug
 Riley,20,trucks
+Harrison,21,bite-sized
 Harrison,27,avoid
 Harrison,27,twig
 Harrison,28,shivering
