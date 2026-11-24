@@ -1,22 +1,26 @@
+Axel,4,educated
+Chan,4,pretend
 Riley,5,tested
 Harrison,6,act
-riee,6,guarantee
 Harrison,7,communicate
-Harrison,7,hideous
 Harrison,7,peel
 Harrison,7,retire
-riee,8,bottle
-RILEY,9,peace
+Donovan,7,thoughtless
+Chan,8,premium
+TJ,9,mate
+Heidi,9,tacky
+Jide ,10,chunky
 Harrison,10,ground
-Harrison,10,next
 Harrison,11,adaptable
 Harrison,11,repair
+Donovan,11,violet
+Donovan,12,marked
+Quinn,12,prickly
+Heidi,13,berserk
 Harrison,13,dapper
 Harrison,13,hard
-RILEY,14,belligerent
 Riley,14,group
-riee,14,jelly
-Harrison,14,level
+Jide ,15,chief
 Harrison,20,hug
 Riley,20,trucks
 Harrison,21,bite-sized
